@@ -119,26 +119,69 @@
             letter-spacing: -0.5px;
         }
 
-        .back-link {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 8px 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50px;
-            transition: all 0.3s ease;
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
         }
 
-        .back-link:hover {
-            background: var(--primary);
-            color: var(--text-light);
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--highlight);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .content-section {
             max-width: 1200px;
             margin: 0 auto;
             padding: 100px 40px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--bg-white);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background: var(--primary);
+            color: var(--text-light);
+            transform: translateX(-5px);
         }
 
         .section-header {
@@ -265,6 +308,17 @@
         }
 
         @media (max-width: 768px) {
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 6px 0;
+            }
+
             .photo-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
@@ -277,12 +331,29 @@
             .content-card {
                 padding: 30px 25px;
             }
+
+            nav {
+                height: auto;
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
         }
 
         @media (max-width: 480px) {
             .photo-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
+            }
+
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
             }
         }
 
@@ -301,11 +372,20 @@
     <header id="header">
         <nav>
             <div class="logo">Miko Racho</div>
-            <a href="portfolio.html" class="back-link">← Back to Portfolio</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="portfolio.html">Biography</a></li>
+                <li><a href="portfolio.html">IT Journey</a></li>
+                <li><a href="portfolio.html">Life & Times</a></li>
+                <li><a href="portfolio.html">Growth</a></li>
+                <li><a href="photodump.html">Photo Dump</a></li>
+                <li><a href="portfolio.html">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
     <section class="content-section">
+        <a href="portfolio.html" class="back-button">← Back to Home</a>
+        
         <div class="section-header">
             <div class="section-tag">Memories</div>
             <h1 class="section-title">Photo Dump</h1>
